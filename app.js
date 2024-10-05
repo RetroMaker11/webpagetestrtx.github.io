@@ -2,7 +2,7 @@ let playlist = [];
 
 function searchVideos() {
     const query = document.getElementById("search-bar").value;
-    fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(query)}&type=video&key=YOUR_API_KEY`)
+    fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(query)}&type=video&key=AIzaSyCC0SvC3CQiDFStxQq0efuQvXFOILoAocs`)
         .then(response => response.json())
         .then(data => {
             const videoResults = document.getElementById("video-results");
