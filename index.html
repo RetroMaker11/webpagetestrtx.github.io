@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Test of Zelda</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #8FD3F4, #84FAB0, #FFC371);
+            color: #333;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #2E8B57;
+            font-size: 3em;
+        }
+        .question {
+            background: #FFF;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin: 20px 0;
+            padding: 20px;
+        }
+        .question h2 {
+            color: #2E8B57;
+        }
+        .question label {
+            display: block;
+            margin: 10px 0;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: #2E8B57;
+            color: #FFF;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #1E6838;
+        }
+        #result {
+            text-align: center;
+            font-size: 1.5em;
+            color: #2E8B57;
+            margin-top: 20px;
+        }
+        .images {
+            text-align: center;
+        }
+        .images img {
+            width: 100px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>The Test of Zelda</h1>
+    <form id="quizForm">
+        <div class="question">
+            <h2>1. ¿Cómo se llama la tierra donde se desarrollan la mayoría de los juegos de The Legend of Zelda?</h2>
+            <label><input type="radio" name="q1" value="incorrect"> Termina</label>
+            <label><input type="radio" name="q1" value="correct"> Hyrule</label>
+            <label><input type="radio" name="q1" value="incorrect"> Lorule</label>
+        </div>
+        <div class="question">
+            <h2>2. ¿Cuál es el nombre completo del protagonista?</h2>
+            <label><input type="radio" name="q2" value="correct"> Link</label>
+            <label><input type="radio" name="q2" value="incorrect"> Zelda</label>
+            <label><input type="radio" name="q2" value="incorrect"> Ganon</label>
+        </div>
+        <div class="question">
+            <h2>3. ¿En qué juego aparece por primera vez el personaje de Tingle?</h2>
+            <label><input type="radio" name="q3" value="correct"> Majora's Mask</label>
+            <label><input type="radio" name="q3" value="incorrect"> Ocarina of Time</label>
+            <label><input type="radio" name="q3" value="incorrect"> Wind Waker</label>
+        </div>
+        <div class="question">
+            <h2>4. ¿Cuál es el nombre de la princesa que Link siempre intenta rescatar?</h2>
+            <label><input type="radio" name="q4" value="correct"> Zelda</label>
+            <label><input type="radio" name="q4" value="incorrect"> Peach</label>
+            <label><input type="radio" name="q4" value="incorrect"> Daisy</label>
+        </div>
+        <div class="question">
+            <h2>5. ¿Cuál es la trifuerza que Link usualmente posee?</h2>
+            <label><input type="radio" name="q5" value="incorrect"> Trifuerza de la Sabiduría</label>
+            <label><input type="radio" name="q5" value="correct"> Trifuerza del Valor</label>
+            <label><input type="radio" name="q5" value="incorrect"> Trifuerza del Poder</label>
+        </div>
+        <div class="question">
+            <h2>6. ¿Cuál es el nombre del antagonista principal en la serie?</h2>
+            <label><input type="radio" name="q6" value="correct"> Ganondorf</label>
+            <label><input type="radio" name="q6" value="incorrect"> Vaati</label>
+            <label><input type="radio" name="q6" value="incorrect"> Agahnim</label>
+        </div>
+        <div class="question">
+            <h2>7. ¿Cuál es el nombre del barco en The Wind Waker?</h2>
+            <label><input type="radio" name="q7" value="correct"> King of Red Lions</label>
+            <label><input type="radio" name="q7" value="incorrect"> S.S. Anne</label>
+            <label><input type="radio" name="q7" value="incorrect"> Black Pearl</label>
+        </div>
+        <button type="button" onclick="calculateResult()">Enviar</button>
+    </form>
+    <div id="result"></div>
+    <div class="images">
+        <img src="https://pm1.aminoapps.com/6028/423a8623e4df67361ce8141a52abe45bd1207c9b_00.jpg"Zelda Image 1">
+        <img src="https://lowcygier.pl/wp-content/uploads/2023/03/najlepsze-gry-legend-of-zelda-facebook-scaled.jpg" alt="Zelda Image 2">
+    </div>
+    <script>
+        function calculateResult() {
+            let score = 0;
+            const form = document.forms.quizForm;
+            const questions = form.querySelectorAll('.question');
+            questions.forEach(question => {
+                const checkedAnswer = question.querySelector('input[type="radio"]:checked');
+                if (checkedAnswer && checkedAnswer.value === 'correct') {
+                    score++;
+                }
+            });
+            let nickname = '';
+            if (score >= 1 && score <= 3) {
+                nickname = 'El Elegido Hyliano';
+            } else if (score >= 4 && score <= 6) {
+                nickname = 'Portador de la Espada Maestra';
+            } else if (score === 7) {
+                nickname = 'El Héroe Legendario';
+            }
+            document.getElementById('result').textContent = `Tu apodo es: ${nickname}`;
+        }
+    </script>
+</body>
+  </html>
